@@ -1,0 +1,113 @@
+<!--
+    RESULT.HTML
+    Página de resultados que muestra el animal favorito del usuario.
+    El servidor inyecta dinámicamente el nombre y la imagen (como fondo css) reemplazando los marcadores.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Animal Favorito</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            /* Fondo predeterminado (naturaleza) */
+            background-image: url('images/animal_background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Tarjeta de resultado que mostrará el animal */
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Fondo por defecto (gradiente) */
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: fadeIn 0.8s ease;
+            /* Animación de aparición */
+
+            /* Nota: El servidor inyectará 'background-image' aquí si existe una imagen para el animal */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .animal-name {
+            font-weight: 800;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 1rem;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* Sombra para mejor lectura */
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-card">
+        <p>Tu animal favorito es:</p>
+        <!-- Marcador para insertar dinámicamente el nombre del animal -->
+        <span class="animal-name"><!-- ANIMAL_NAME --></span>
+
+        <div id="animal-image-container" style="margin-top: 20px;">
+            <!-- Marcador para insertar imagen adicional (usado para fallback) -->
+            <!-- ANIMAL_IMAGE -->
+        </div>
+        <br>
+        <a href="/" class="back-link">← Volver</a>
+    </div>
+</body>
+
+</html>
